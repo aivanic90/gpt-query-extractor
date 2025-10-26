@@ -1,0 +1,12 @@
+#gpt-extractor-container {
+    width: 30em;
+    height: 40em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#gpt-extractor-button {
+    justify-content: center;
+}
