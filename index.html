@@ -8,8 +8,75 @@
 </head>
 <body>
     <main id="gpt-extractor-container">
-        <h1>ChatGPT Query Extractor</h1>
-        <button id="gpt-extractor-button">Extract queries</button>
+        <!-- Initial View -->
+        <div id="initial-view">
+            <h1>ChatGPT Query Extractor</h1>
+            <button id="gpt-extractor-button">Extract queries</button>
+        </div>
+
+        <!-- Loading View -->
+        <div id="loading-view" style="display: none">
+            <div class="loading-spinner"></div>
+            <p>Extracting queries and messages...</p>
+        </div>
+
+        <!-- Results View -->
+        <div id="results-view" style="display: none">
+            <h1>Extraction Results</h1>
+            <div id="results-summary"></div>
+            <div class="accordion-container">
+                <!-- Messages Accordion -->
+                <div class="accordion">
+                    <button class="accordion-header">
+                        <div>
+                            <span>Messages</span>
+                            <span class="badge" id="messages-badge">0</span>
+                        </div>
+
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div id="messages-list" class="content-list"></div>
+                    </div>
+                </div>
+
+                <!-- Search Queries Accordion -->
+                <div class="accordion">
+                    <button class="accordion-header">
+                        <div>
+                            <span>Search Queries</span>
+                            <span class="badge" id="queries-badge">0</span>
+                        </div>
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div id="queries-list" class="content-list"></div>
+                    </div>
+                </div>
+
+                <!-- Search Nodes Accordion -->
+                <div class="accordion">
+                    <button class="accordion-header">
+                        <div>
+                            <span>Search Nodes</span>
+                            <span class="badge" id="nodes-badge">0</span>
+                        </div>
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div id="nodes-list" class="content-list"></div>
+                    </div>
+                </div>
+            </div>
+            <button id="back-button" class="secondary-button">Extract Another</button>
+        </div>
+
+        <!-- Error View -->
+        <div id="error-view" style="display: none">
+            <h1>Error</h1>
+            <p id="error-message"></p>
+            <button id="retry-button" class="secondary-button">Try Again</button>
+        </div>
     </main>
     <script type="text/javascript" src="./main.js"></script>
 </body>

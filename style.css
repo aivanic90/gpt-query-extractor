@@ -1,12 +1,221 @@
 #gpt-extractor-container {
     width: 30em;
-    height: 40em;
+    min-height: 40em;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 #gpt-extractor-button {
-    justify-content: center;
+    padding: 12px 24px;
+    background: #10a37f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+#gpt-extractor-button:hover:not(:disabled) {
+    background: #0d8c6c;
+}
+
+#gpt-extractor-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.secondary-button {
+    padding: 10px 20px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.secondary-button:hover {
+    background: #5a6268;
+}
+
+/* Loading Styles */
+#loading-view {
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #10a37f;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Accordion Styles */
+.accordion-container {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.accordion {
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.accordion-header:hover {
+    background: #e9ecef;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: white;
+    display:none;
+}
+
+.accordion-content.expanded {
+    max-height: 300px;
+    overflow-y: auto;
+    display: block;
+}
+
+.arrow {
+    transition: transform 0.3s;
+    font-size: 12px;
+}
+
+.arrow.expanded {
+    transform: rotate(180deg);
+}
+
+.badge {
+    background: #10a37f;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Content List Styles */
+.content-list {
+    padding: 15px;
+}
+
+.message-item, .query-item, .node-item {
+    background: #f8f9fa;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border-left: 4px solid #10a37f;
+    text-align: left;
+}
+
+.message-item.user {
+    border-left-color: #10a37f;
+}
+
+.message-item.assistant {
+    border-left-color: #8b5cf6;
+}
+
+.query-item {
+    border-left-color: #f59e0b;
+}
+
+.node-item {
+    border-left-color: #ef4444;
+}
+
+.role-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    background: #6c757d;
+    color: white;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.role-badge.user {
+    background: #10a37f;
+}
+
+.role-badge.assistant {
+    background: #8b5cf6;
+}
+
+/* Text Styles */
+.text-content {
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #333;
+}
+
+.query-text {
+    background: white;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #e1e1e1;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Results Summary */
+#results-summary {
+    background: #e7f6f2;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* View Management */
+#initial-view, #loading-view, #results-view, #error-view {
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+#error-message {
+    color: #dc3545;
+    margin: 20px 0;
 }
