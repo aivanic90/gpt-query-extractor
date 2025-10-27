@@ -104,15 +104,34 @@ const extractQueries = async () => {
       (node) => node.message?.metadata?.search_model_queries?.queries || []
     );
 
-    console.log(`Extracted ${queries.length} queries and ${messages.length} messages`);
+    // Extract thoughts
+    const thoughts = Object.values(conversation.mapping)
+      .filter((node) => 
+        node.message?.content?.content_type === "thoughts" && 
+        node.message?.content?.thoughts?.length > 0
+      )
+      .map((node) => ({
+        nodeId: node.id,
+        role: node.message.author.role,
+        thoughts: node.message.content.thoughts.map(thought => ({
+          summary: thought.summary,
+          content: thought.content,
+          chunks: thought.chunks || [],
+          finished: thought.finished || false
+        }))
+      }));
 
-    console.log(`Messages: ${messages}`)
-    console.log(`Queries: ${queries}`)
+    console.log(`Extracted ${queries.length} queries, ${messages.length} messages, and ${thoughts.length} thought nodes`);
+
+    console.log(`Messages: ${messages}`);
+    console.log(`Queries: ${queries}`);
+    console.log(`Thoughts: ${thoughts}`);
     
     return {
       messages,
       searchNodes,
       queries,
+      thoughts,
       conversationId: cId
     };
   } catch (error) {
